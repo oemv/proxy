@@ -1,8 +1,4 @@
-import { HTMLRewriter, init } from "https://deno.land/x/lol_html@0.1.0/mod.ts";
-
-// --- WASM Initialization (CRITICAL FIX) ---
-// This ensures the HTMLRewriter is ready before we start the server.
-await init();
+import { HTMLRewriter } from "https://deno.land/x/lol_html@0.1.0/mod.ts";
 
 // --- Configuration ---
 const PROXY_URL_PARAM = "url";
