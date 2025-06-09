@@ -1,11 +1,11 @@
-// --- Module Loading & Pre-warming (CRITICAL FIX) ---
-// We dynamically import to ensure the code is loaded.
-const { HTMLRewriter } = await import("https://deno.land/x/lol_html@0.1.0/mod.ts");
+// --- Module Loading & Initialization (THE DEFINITIVE FIX) ---
+// Import from v0.2.0, which was created to solve this specific problem.
+import { HTMLRewriter, init } from "https://deno.land/x/lol_html@0.2.0/mod.ts";
 
-// Then, we create a "dummy" instance and immediately free it.
-// This forces the underlying WebAssembly to fully initialize and compile
-// BEFORE the server starts, definitively solving the race condition.
-new HTMLRewriter().free();
+// Call and await the explicit init() function. This forces the script to
+// wait until the WebAssembly is fully compiled and ready before the server starts.
+// This is the entire fix.
+await init();
 
 // --- Configuration ---
 const PROXY_URL_PARAM = "url";
