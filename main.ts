@@ -25,7 +25,7 @@ const RESTRICTED_IP_PREFIXES = [
 
 // --- Rewrite Logic (from rewrite.ts) ---
 
-import { HTMLRewriter } from "https://deno.land/x/lol_html@0.1.1/mod.ts";
+import { HTMLRewriter } from "https://deno.land/x/lol_html@0.1.0/mod.ts";
 
 function getProxyUrl(requestUrl: URL, target: string): string {
   const newUrl = new URL(requestUrl.href);
