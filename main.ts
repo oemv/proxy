@@ -1,4 +1,8 @@
-import { HTMLRewriter } from "https://deno.land/x/lol_html@0.1.0/mod.ts";
+// --- Module Loading (CRITICAL FIX) ---
+// Use dynamic import with await at the top level. This forces Deno to wait
+// until the module (and its internal WASM) is fully loaded and ready
+// before proceeding to the Deno.serve call, eliminating the race condition.
+const { HTMLRewriter } = await import("https://deno.land/x/lol_html@0.1.0/mod.ts");
 
 // --- Configuration ---
 const PROXY_URL_PARAM = "url";
