@@ -1,6 +1,6 @@
 // --- Module Loading & Initialization (THE DEFINITIVE FIX) ---
 // Import from v0.2.0, which was created to solve this specific problem.
-import { HTMLRewriter, init } from "https://deno.land/x/lol_html@0.2.0/mod.ts";
+import { HTMLRewriter, init } from "https://deno.land/x/lol_html@0.1.0/mod.ts";
 
 // Call and await the explicit init() function. This forces the script to
 // wait until the WebAssembly is fully compiled and ready before the server starts.
