@@ -1,8 +1,11 @@
-// --- Module Loading (CRITICAL FIX) ---
-// Use dynamic import with await at the top level. This forces Deno to wait
-// until the module (and its internal WASM) is fully loaded and ready
-// before proceeding to the Deno.serve call, eliminating the race condition.
+// --- Module Loading & Pre-warming (CRITICAL FIX) ---
+// We dynamically import to ensure the code is loaded.
 const { HTMLRewriter } = await import("https://deno.land/x/lol_html@0.1.0/mod.ts");
+
+// Then, we create a "dummy" instance and immediately free it.
+// This forces the underlying WebAssembly to fully initialize and compile
+// BEFORE the server starts, definitively solving the race condition.
+new HTMLRewriter().free();
 
 // --- Configuration ---
 const PROXY_URL_PARAM = "url";
